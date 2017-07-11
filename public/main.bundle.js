@@ -149,28 +149,28 @@ var TodoService = (function () {
     }
     //retriving todo service
     TodoService.prototype.getTodos = function () {
-        return this.http.get('http://localhost:3000/todo-api/todos')
+        return this.http.get('https://todoapp-ang2.herokuapp.com/todo-api/todos')
             .map(function (res) { return res.json(); });
     };
     //add todo
     TodoService.prototype.addTodo = function (newTodo) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
-        return this.http.post('http://localhost:3000/todo-api/todo', newTodo, options)
+        return this.http.post('https://todoapp-ang2.herokuapp.com/todo-api/todo', newTodo, options)
             .map(function (res) { return res.json(); });
     };
     //update todo
     TodoService.prototype.updateTodo = function (todo, editIsCompleted) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        var url = "http://localhost:3000/todo-api/todo/" + todo._id;
+        var url = "https://todoapp-ang2.herokuapp.com/todo-api/todo/" + todo._id;
         var update = (editIsCompleted === true) ? { "isCompleted": todo.isCompleted } : { "task": todo.task };
         return this.http.put(url, update, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     //delete todo
     TodoService.prototype.deleteTodo = function (id) {
-        return this.http.delete('http://localhost:3000/todo-api/todo/' + id)
+        return this.http.delete('https://todoapp-ang2.herokuapp.com/todo-api/todo/' + id)
             .map(function (res) { return res.json(); });
     };
     return TodoService;
